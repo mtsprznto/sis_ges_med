@@ -16,6 +16,7 @@
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -85,15 +86,15 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link ">
+                                    <a href="{{url('admin/usuarios/create')}}" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Active Page</p>
+                                        <p>Creación de usuarios</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link ">
+                                    <a href="{{url('admin/usuarios')}}" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Inactive Page</p>
+                                        <p>Listado de usuarios</p>
                                     </a>
                                 </li>
                             </ul>
@@ -114,7 +115,7 @@
         </aside>
 
         <div class="content-wrapper">
-            <div class="container pt-2">
+            <div class="container p-4">
                 @yield('content')
             </div>
         </div>
@@ -129,14 +130,27 @@
         </aside>
         <!-- /.control-sidebar -->
 
+        @if( (($message = Session::get('mensaje')) && ($icono = Session::get('icono'))) )
+        <script>
+            Swal.fire({
+                position: "top-end",
+                icon: "{{$icono}}",
+                title: "{{$message}}",
+                showConfirmButton: false,
+                timer: 3500
+            });
+        </script>
+        @endif
+
+
         <!-- Main Footer -->
         <footer class="main-footer">
             <!-- To the right -->
             <div class="float-right d-none d-sm-inline">
-                Anything you want
+                Sis Medical
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights
+            <strong>Copyright &copy; 2014-2025 <a href="#">Sis Medical</a>.</strong> All rights
             reserved.
         </footer>
     </div>
