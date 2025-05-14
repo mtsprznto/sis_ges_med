@@ -17,6 +17,15 @@
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <!-- jQuery -->
+    <script src="{{ url('plugins/jquery/jquery.min.js') }}"></script>
+
+    <!-- Data table -->
+    <link rel="stylesheet" href="{{url('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{url('plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{url('plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -88,13 +97,13 @@
                                 <li class="nav-item">
                                     <a href="{{url('admin/usuarios/create')}}" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Creación de usuarios</p>
+                                        <p>Registrar usuarios</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{url('admin/usuarios')}}" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Listado de usuarios</p>
+                                        <p>Listar usuarios</p>
                                     </a>
                                 </li>
                             </ul>
@@ -158,12 +167,26 @@
 
     <!-- REQUIRED SCRIPTS -->
 
-    <!-- jQuery -->
-    <script src="{{ url('plugins/jquery/jquery.min.js') }}"></script>
+
     <!-- Bootstrap 4 -->
     <script src="{{ url('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{url('plugins/datatables/jquery.dataTables.min.js')}} "></script>
+    <script src="{{url('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}} "></script>
+    <script src="{{url('plugins/datatables-responsive/js/dataTables.responsive.min.js')}} "></script>
+    <script src="{{url('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}} "></script>
+    <script src="{{url('plugins/datatables-buttons/js/dataTables.buttons.min.js')}} "></script>
+    <script src="{{url('plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}} "></script>
+    <script src="{{url('plugins/jszip/jszip.min.js')}} "></script>
+    <script src="{{url('plugins/pdfmake/pdfmake.min.js')}} "></script>
+    <script src="{{url('plugins/pdfmake/vfs_fonts.js')}} "></script>
+    <script src="{{url('plugins/datatables-buttons/js/buttons.html5.min.js')}} "></script>
+    <script src="{{url('plugins/datatables-buttons/js/buttons.print.min.js')}} "></script>
+    <script src="{{url('plugins/datatables-buttons/js/buttons.colVis.min.js')}} "></script>
+
     <!-- AdminLTE App -->
     <script src="{{ url('dist/js/adminlte.min.js') }}"></script>
+
+
 </body>
 
 </html>

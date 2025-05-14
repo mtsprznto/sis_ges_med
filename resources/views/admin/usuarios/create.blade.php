@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="row">
-    <h1>Registro de un nuevo usuario</h1>
+    <h1>Registrar usuario</h1>
 </div>
 <hr>
 <div class="row">
