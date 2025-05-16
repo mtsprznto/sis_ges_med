@@ -73,4 +73,18 @@ class UsuarioController extends Controller
 
         return redirect()->route('admin.usuarios.index')->with("mensaje", "Se actualizo al usuario '{$usuario->name}' exitosamente!")->with("icono", "success");
     }
+
+    public function confirmDelete($id)
+    {
+        $usuario = User::findOrFail($id);
+
+        return view("admin.usuarios.delete", compact("usuario"));
+    }
+
+    public function destroy($id)
+    {
+        User::destroy($id);
+
+        return redirect()->route('admin.usuarios.index')->with("mensaje", "Se elimino al usuario exitosamente!")->with("icono", "success");
+    }
 }

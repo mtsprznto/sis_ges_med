@@ -40,7 +40,7 @@
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="{{url('/admin/usuarios/'.$usuario->id)}}" type="button" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
                                     <a href="{{url('/admin/usuarios/'.$usuario->id.'/edit')}}" type="button" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
-                                    <button type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash2-fill"></i></button>
+                                    <a href="{{url('/admin/usuarios/'.$usuario->id.'/confirm-delete')}}" type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash2-fill"></i></a>
                                 </div>
                             </td>
                         </tr>
