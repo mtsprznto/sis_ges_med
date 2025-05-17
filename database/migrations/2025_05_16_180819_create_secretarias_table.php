@@ -13,8 +13,16 @@ return new class extends Migration
     {
         Schema::create('secretarias', function (Blueprint $table) {
             $table->id();
+            $table->string('nombres', 100);
+            $table->string('apellidos', 100);
+            $table->string('ci',100)->unique();
+            $table->string('celular',100)->unique();
+            $table->string('direccion',255)->unique();
+            $table->string('fecha_nacimiento',100)->unique();
             
-
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            
 
             $table->timestamps();
         });

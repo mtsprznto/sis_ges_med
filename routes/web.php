@@ -35,3 +35,7 @@ Route::get('/admin/usuarios/{id}/confirm-delete', [App\Http\Controllers\UsuarioC
 Route::delete('/admin/usuarios/{id}', [App\Http\Controllers\UsuarioController::class, 'destroy'])->name('admin.usuarios.destroy')->middleware('auth');
 
 
+//----------------
+// RUTAS PARA ADMIN - SECRETARIAS
+Route::get('/admin/secretarias', [App\Http\Controllers\SecretariaController::class, 'index'])->name('admin.secretarias.index')->middleware('auth');
+Route::get('/admin/secretarias/create', [App\Http\Controllers\SecretariaController::class, 'create'])->name('admin.secretarias.create')->middleware('auth');

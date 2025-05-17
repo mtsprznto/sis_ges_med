@@ -109,6 +109,30 @@
                             </ul>
                         </li>
                         <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon bi bi-person-circle"></i>
+                                <p>
+                                    Secretarias
+                                    <i class="right fas fa-angle-left"></i>
+                                    
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{url('admin/secretarias/create')}}" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Creación de secretarias</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{url('admin/secretarias')}}" class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Listar secretarias</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
                             <a href="#" class="nav-link bg-red">
                                 <i class="nav-icon bi bi-door-closed"></i>
                                 <p>
