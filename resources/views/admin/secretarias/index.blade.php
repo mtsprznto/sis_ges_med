@@ -40,6 +40,10 @@
                             <th scope="row" style="text-align: center;">{{$contador++}}</th>
                             <td>{{$secretaria -> nombres}}</td>
                             <td>{{$secretaria -> apellidos}}</td>
+                            <td>{{$secretaria -> ci}}</td>
+                            <td>{{$secretaria -> celular}}</td>
+                            <td>{{$secretaria -> direccion}}</td>
+                            <td>{{$secretaria -> user->email}}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="{{url('/admin/secretarias/'.$secretaria->id)}}" type="button" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
