@@ -129,11 +129,19 @@ class SecretariaController extends Controller
         return redirect()->route('admin.secretarias.index')->with("mensaje", "Se actualizo el secretario/a '{$secretaria->name}' exitosamente!")->with("icono", "success");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Secretaria $secretaria)
+    public function confirmDelete($id)
     {
-        //
+        $secretaria = Secretaria::findOrFail($id);
+
+        return view("admin.secretarias.delete", compact("secretaria"));
+    }
+
+    public function destroy($id)
+    {
+        $secretaria = Secretaria::find($id);
+        $user = $secretaria->user;
+        $user->delete();
+        $secretaria->delete();
+        return redirect()->route('admin.secretarias.index')->with("mensaje", "Se elimino al secretaria/o exitosamente!")->with("icono", "success");
     }
 }
