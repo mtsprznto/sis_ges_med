@@ -13,6 +13,8 @@ class ConsultorioController extends Controller
     public function index()
     {
         //
+        $consultorios = Consultorio::all();
+        return view('admin.consultorios.index', compact('consultorios'));
     }
 
     /**
@@ -21,6 +23,7 @@ class ConsultorioController extends Controller
     public function create()
     {
         //
+        return view('admin.consultorios.create');
     }
 
     /**
@@ -28,15 +31,35 @@ class ConsultorioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*
+        $datos = request()->all();
+        return response()->json($datos);
+        */
+        $request->validate([
+            "nombre" => "required",
+            "ubicacion" => "required",
+            "capacidad" => 'required',
+            "especialidad" => 'required',
+            "estado" => "required"
+        ]);
+
+        Consultorio::create($request->all());
+
+
+        return redirect()->route('admin.consultorios.index')
+            ->with('mensaje', 'Se registro al consultorio exitosamente')
+            ->with('icono', 'success');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Consultorio $consultorio)
+    public function show($id)
     {
         //
+        $consultorio = Consultorio::findOrFail($id);
+
+        return view('admin.consultorios.show', compact('consultorio'));
     }
 
     /**
