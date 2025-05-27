@@ -42,10 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function secretarias(){
+    public function secretarias()
+    {
         return $this->hasMany(Secretaria::class);
     }
 
-
-
+    public function doctor()
+    {
+        return $this->hasOne(Doctor::class);
+    }
 }

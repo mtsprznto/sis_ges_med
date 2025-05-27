@@ -19,7 +19,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">Nombre del consultorio</label> <b>*</b>
-                                <input type="text" name="nombre" value="{{old('nombre')}}" class="form-control" required ">
+                                <input type="text" name="nombre" value="{{old('nombre')}}" class="form-control" required>
                                 @error('nombre')
                                 <small style=" color:red">{{$message}}</small>
                                 @enderror
@@ -28,7 +28,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">Ubicación</label> <b>*</b>
-                                <input type="text" name="ubicacion" value="{{old('ubicacion')}}" class="form-control" required ">
+                                <input type="text" name="ubicacion" value="{{old('ubicacion')}}" class="form-control" required >
                                 @error('ubicacion')
                                 <small style=" color:red">{{$message}}</small>
                                 @enderror
@@ -37,7 +37,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="">Capacidad</label> <b>*</b>
-                                <input type="text" name="capacidad" value="{{old('capacidad')}}" class="form-control" required ">
+                                <input type="text" name="capacidad" value="{{old('capacidad')}}" class="form-control" required >
                                 @error('ci')
                                 <small style=" color:red">{{$message}}</small>
                                 @enderror
