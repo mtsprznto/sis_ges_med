@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <h1>Listado de doctores</h1>
+    <h1>Listado de horarios</h1>
 
 </div>
 <hr>
@@ -10,10 +10,10 @@
     <div class="col-md-12">
         <div class="card card-outline card-primary">
             <div class="card-header">
-                <h3 class="card-title">Doctores registrados</h3>
+                <h3 class="card-title">Horarios registrados</h3>
 
                 <div class="card-tools">
-                    <a href="{{url('admin/doctores/create')}}" class="btn btn-primary">
+                    <a href="{{url('admin/horarios/create')}}" class="btn btn-primary">
                         Registrar nuevo
                     </a>
                 </div>
@@ -35,20 +35,20 @@
                     </thead>
                     <tbody>
                         <?php $contador = 1; ?>
-                        @foreach($doctores as $doctor)
+                        @foreach($horarios as $horario)
                         <tr>
                             <th scope="row" style="text-align: center;">{{$contador++}}</th>
-                            <td>{{$doctor -> nombres}}</td>
-                            <td>{{$doctor -> apellidos}}</td>
-                            <td>{{$doctor -> telefono}}</td>
-                            <td>{{$doctor -> licencia_medica}}</td>
-                            <td>{{$doctor -> especialidad}}</td>
-                            <td>{{$doctor -> user->email}}</td>
+                            <td>{{$horario -> nombres}}</td>
+                            <td>{{$horario -> apellidos}}</td>
+                            <td>{{$horario -> telefono}}</td>
+                            <td>{{$horario -> licencia_medica}}</td>
+                            <td>{{$horario -> especialidad}}</td>
+                            <td>{{$horario -> user->email}}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="{{url('/admin/doctores/'.$doctor->id)}}" type="button" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
-                                    <a href="{{url('/admin/doctores/'.$doctor->id.'/edit')}}" type="button" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
-                                    <a href="{{url('/admin/doctores/'.$doctor->id.'/confirm-delete')}}" type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash2-fill"></i></a>
+                                    <a href="{{url('/admin/horarios/'.$horario->id)}}" type="button" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
+                                    <a href="{{url('/admin/horarios/'.$horario->id.'/edit')}}" type="button" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
+                                    <a href="{{url('/admin/horarios/'.$horario->id.'/confirm-delete')}}" type="button" class="btn btn-danger btn-sm"><i class="bi bi-trash2-fill"></i></a>
                                 </div>
                             </td>
                         </tr>
@@ -62,12 +62,12 @@
                             "pageLength": 10,
                             "language": {
                                 "emptyTable": "No hay información",
-                                "info": "Mostrando _START_ a _END_ de _TOTAL_ doctores",
-                                "infoEmpty": "Mostrando 0 a 0 de 0 doctores",
-                                "infoFiltered": "(Filtrado de _MAX_ total doctores)",
+                                "info": "Mostrando _START_ a _END_ de _TOTAL_ horarios",
+                                "infoEmpty": "Mostrando 0 a 0 de 0 horarios",
+                                "infoFiltered": "(Filtrado de _MAX_ total horarios)",
                                 "infoPostFix": "",
                                 "thousands": ",",
-                                "lengthMenu": "Mostrar _MENU_ doctores",
+                                "lengthMenu": "Mostrar _MENU_ horarios",
                                 "loadingRecords": "Cargando...",
                                 "processing": "Procesando...",
                                 "search": "Buscador:",
