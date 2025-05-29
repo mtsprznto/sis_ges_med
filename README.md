@@ -22,6 +22,9 @@ Registrar, Mostrar, Eliminar, Editar
 
 Registrar, Mostrar, Eliminar, Editar
 
+- Horario, incoporando calendario
+
+Registrar, Mostrar, Eliminar, Editar
 
 
 https://adminlte.io/

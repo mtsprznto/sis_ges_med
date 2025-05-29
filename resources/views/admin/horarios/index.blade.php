@@ -24,12 +24,12 @@
                     <thead class="bg-info">
                         <tr>
                             <th scope="col" class="text-dark font-weight-normal" style="text-align: center;">Nro</th>
-                            <th scope="col" class="text-dark font-weight-normal">Nombres</th>
-                            <th scope="col" class="text-dark font-weight-normal">Apellidos</th>
-                            <th scope="col" class="text-dark font-weight-normal">Telefono</th>
-                            <th scope="col" class="text-dark font-weight-normal">Licencia Medica</th>
+                            <th scope="col" class="text-dark font-weight-normal">Doctor</th>
                             <th scope="col" class="text-dark font-weight-normal">Especialidad</th>
-                            <th scope="col" class="text-dark font-weight-normal">Email</th>
+                            <th scope="col" class="text-dark font-weight-normal">Consultorio</th>
+                            <th scope="col" class="text-dark font-weight-normal">Dia de atención</th>
+                            <th scope="col" class="text-dark font-weight-normal">Horario inicio</th>
+                            <th scope="col" class="text-dark font-weight-normal">Hora fin</th>
                             <th scope="col" clasxs="text-dark font-weight-normal">Acciones</th>
                         </tr>
                     </thead>
@@ -38,12 +38,12 @@
                         @foreach($horarios as $horario)
                         <tr>
                             <th scope="row" style="text-align: center;">{{$contador++}}</th>
-                            <td>{{$horario -> nombres}}</td>
-                            <td>{{$horario -> apellidos}}</td>
-                            <td>{{$horario -> telefono}}</td>
-                            <td>{{$horario -> licencia_medica}}</td>
-                            <td>{{$horario -> especialidad}}</td>
-                            <td>{{$horario -> user->email}}</td>
+                            <td>{{$horario ->doctor->nombres." ".$horario->doctor->apellidos}}</td>
+                            <td>{{$horario ->doctor->especialidad}}</td>
+                            <td>{{$horario ->consultorio->nombre." ".$horario->consultorio->ubicacion}}</td>
+                            <td>{{$horario -> dia}}</td>
+                            <td>{{$horario -> hora_inicio}}</td>
+                            <td>{{$horario -> hora_fin}}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="{{url('/admin/horarios/'.$horario->id)}}" type="button" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
@@ -113,6 +113,141 @@
             </div>
         </div>
     </div>
+</div>
 
+<!-- Calendario -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-outline card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Calendario</h3>
+            </div>
+            <div class="card-body">
+                <table style="font-size: 12px;" class="table table-striped table-hover table-sm table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Hora</th>
+                            <th>Lun</th>
+                            <th>Mar</th>
+                            <th>Mie</th>
+                            <th>Jue</th>
+                            <th>Vie</th>
+                            <th>Sab</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>08:00 - 09:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>09:00 - 10:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>10:00 - 11:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>11:00 - 12:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>12:00 - 13:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>13:00 - 14:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>14:00 - 15:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>15:00 - 16:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>16:00 - 17:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>17:00 - 18:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>18:00 - 19:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>19:00 - 20:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
