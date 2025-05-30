@@ -41,14 +41,46 @@ class HorarioController extends Controller
         $datos = $request->all();
         return response()->json($datos);
         */
+
+        /*
+        FALTA VALIDAR SI EL HORARIO QUE ESTAN PIDIENDO ES EN OTRO CONSULTORIO.
+        En el caso de que fuera otro consultorio que si se pueda realizar la reserva de hora, ya que es en otro lugar fisico, en este momento solo se esta validando si chocan los horarios sin importar si es en otro consultorio
+        */
+
         $request->validate([
             'dia' => 'required',
-            'hora_inicio' => 'required',
-            'hora_fin' => 'required',
+            'hora_inicio' => 'required|date_format:H:i',
+            'hora_fin' => 'required|date_format:H:i|after:hora_inicio',
         ]);
-        Horario::create($request->all());
 
-        return redirect()->route('admin.horarios.index')->with("mensaje", "Se registro horario exitosamente!")->with("icono", "success");
+        $horarioExistente = Horario::where('dia', $request->dia)
+            ->where(function ($query) use ($request) {
+                $query->where(function ($q) use ($request) {
+                    $q->where('hora_inicio', '>=', $request->hora_inicio)
+                        ->where('hora_inicio', '<', $request->hora_fin);
+                })
+                    ->orWhere(function ($q) use ($request) {
+                        $q->where('hora_fin', '>', $request->hora_inicio)
+                            ->where('hora_fin', '<=', $request->hora_fin);
+                    })
+                    ->orWhere(function ($q) use ($request) {
+                        $q->where('hora_inicio', '<', $request->hora_inicio)
+                            ->where('hora_fin', '>', $request->hora_fin);
+                    });
+            })
+            ->exists();
+
+
+
+        if ($horarioExistente) {
+            return redirect()->back()
+                ->withInput()
+                ->with("mensaje", "Ya existe un horario que se superpone con el horario ingresado")->with("icono", "error");
+        }
+
+        Horario::create($request->all());
+        return redirect()->route('admin.horarios.index')
+            ->with("mensaje", "Se registro el horario de manera exitosa")->with("icono", "success");
     }
 
     /**

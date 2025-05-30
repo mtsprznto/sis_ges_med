@@ -136,116 +136,65 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $horas = [
+                        '08:00:00 - 09:00:00',
+                        '09:00:00 - 10:00:00',
+                        '10:00:00 - 11:00:00',
+                        '11:00:00 - 12:00:00',
+                        '12:00:00 - 13:00:00',
+                        '13:00:00 - 14:00:00',
+                        '14:00:00 - 15:00:00',
+                        '15:00:00 - 16:00:00',
+                        '16:00:00 - 17:00:00',
+                        '17:00:00 - 18:00:00',
+                        '18:00:00 - 19:00:00',
+                        '19:00:00 - 20:00:00'
+                        ];
+                        // Usamos 7 días y según tu tabla, omito DOMINGO. Si deseas incluirlo, agrégalo al array.
+                        $diasSemana = [
+                        'LUNES',
+                        'MARTES',
+                        'MIERCOLES',
+                        'JUEVES',
+                        'VIERNES',
+                        'SABADO'
+                        ];
+                        @endphp
+
+                        @foreach ($horas as $hora)
+                        @php
+                        list($hora_inicio, $hora_fin) = explode(' - ', $hora);
+                        @endphp
                         <tr>
-                            <td>08:00 - 09:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $hora }}</td>
+                            @foreach ($diasSemana as $dia)
+                            @php
+                            // Inicializamos un arreglo para acumular los nombres de doctores
+                            $nombres_doctores = [];
+                            foreach($horarios as $horario) {
+                            if (
+                            strtoupper($horario->dia) == $dia &&
+                            $hora_inicio >= $horario->hora_inicio &&
+                            $hora_fin <= $horario->hora_fin
+                                ) {
+                                // Acumula el nombre del doctor, si está disponible
+                                $nombres_doctores[] = $horario->doctor->nombres;
+                                }
+                                }
+                                // Evitamos nombres duplicados
+                                $nombres_doctores = array_unique($nombres_doctores);
+                                // Concatenamos todos los nombres usando "/" como separador
+                                $nombre_doctor = count($nombres_doctores) ? implode(' / ', $nombres_doctores) : '';
+                                @endphp
+                                <td>{{ $nombre_doctor }}</td>
+                                @endforeach
                         </tr>
-                        <tr>
-                            <td>09:00 - 10:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>10:00 - 11:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>11:00 - 12:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>12:00 - 13:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>13:00 - 14:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>14:00 - 15:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>15:00 - 16:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>16:00 - 17:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>17:00 - 18:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>18:00 - 19:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>19:00 - 20:00</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
+
+
             </div>
         </div>
     </div>
