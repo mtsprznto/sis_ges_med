@@ -71,7 +71,7 @@ Route::delete('/admin/consultorios/{id}', [App\Http\Controllers\ConsultorioContr
 
 
 //--------------
-// RUTAS PARA ADMIN - horarios
+// RUTAS PARA ADMIN - DOCTORES
 Route::get('/admin/doctores', [App\Http\Controllers\DoctorController::class, 'index'])->name('admin.doctores.index')->middleware('auth');
 Route::get('/admin/doctores/create', [App\Http\Controllers\DoctorController::class, 'create'])->name('admin.doctores.create')->middleware('auth');
 Route::post('/admin/doctores/create', [App\Http\Controllers\DoctorController::class, 'store'])->name('admin.doctores.store')->middleware('auth');
@@ -83,7 +83,7 @@ Route::delete('/admin/doctores/{id}', [App\Http\Controllers\DoctorController::cl
 
 
 //--------------
-// RUTAS PARA ADMIN - DOCTORES
+// RUTAS PARA ADMIN - HORARIOS
 Route::get('/admin/horarios', [App\Http\Controllers\HorarioController::class, 'index'])->name('admin.horarios.index')->middleware('auth');
 Route::get('/admin/horarios/create', [App\Http\Controllers\HorarioController::class, 'create'])->name('admin.horarios.create')->middleware('auth');
 Route::post('/admin/horarios/create', [App\Http\Controllers\HorarioController::class, 'store'])->name('admin.horarios.store')->middleware('auth');
@@ -92,3 +92,6 @@ Route::get('/admin/horarios/{id}/edit', [App\Http\Controllers\HorarioController:
 Route::put('/admin/horarios/{id}', [App\Http\Controllers\HorarioController::class, 'update'])->name('admin.horarios.update')->middleware('auth');
 Route::get('/admin/horarios/{id}/confirm-delete', [App\Http\Controllers\HorarioController::class, 'confirmDelete'])->name('admin.horarios.confirmdelete')->middleware('auth');
 Route::delete('/admin/horarios/{id}', [App\Http\Controllers\HorarioController::class, 'destroy'])->name('admin.horarios.destroy')->middleware('auth');
+
+//AJAX
+Route::get('/admin/horarios/consultorios/{id}', [App\Http\Controllers\HorarioController::class, 'cargar_datos_consultorio'])->name('admin.horarios.cargar_datos_consultorio')->middleware('auth');

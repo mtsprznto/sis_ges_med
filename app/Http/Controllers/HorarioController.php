@@ -16,7 +16,8 @@ class HorarioController extends Controller
     {
         //
         $horarios = Horario::with('doctor', 'consultorio')->get();
-        return view("admin.horarios.index", compact("horarios"));
+        $consultorios = Consultorio::all();
+        return view("admin.horarios.index", compact("horarios", 'consultorios'));
     }
 
     /**
@@ -27,8 +28,22 @@ class HorarioController extends Controller
         //
         $doctores = Doctor::all();
         $consultorios = Consultorio::all();
+        $horarios = Horario::with('doctor', 'consultorio')->get();
 
-        return view("admin.horarios.create", compact('doctores', 'consultorios'));
+        return view("admin.horarios.create", compact('doctores', 'consultorios', 'horarios'));
+    }
+    public function cargar_datos_consultorio($id)
+    {
+        try {
+
+            $horarios = Horario::with('doctor', 'consultorio')->where('consultorio_id', $id)->get();
+
+            // print_r($horarios);
+            return view('admin.horarios.cargar_datos_consultorios', compact('horarios'));
+            
+        } catch (\Exception $ex) {
+            return response()->json(['mensaje' => 'Error']);
+        }
     }
 
     /**
