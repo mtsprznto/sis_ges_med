@@ -52,9 +52,9 @@
         <div class="branding d-flex align-items-center">
 
             <div class="container position-relative d-flex align-items-center justify-content-between">
-                <a href="index.html" class="logo d-flex align-items-center me-auto">
+                <a href="{{url('/')}}" class="logo d-flex align-items-center me-auto">
                     
-                    <h1 class="{{url('/')}}">SIS MEDICAL</h1>
+                    <h1 class="sitename">SIS MEDICAL</h1>
                 </a>
 
                 <nav id="navmenu" class="navmenu">
