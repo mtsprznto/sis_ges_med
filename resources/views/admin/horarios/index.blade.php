@@ -120,19 +120,24 @@
     <div class="col-md-12">
         <div class="card card-outline card-primary">
             <div class="card-header">
-                <h3 class="card-title">Calendario</h3>
-            </div>
-            <div class="card-body">
                 <div class="row">
-                    <div class="form-group">
+                    <div class="col-md-6">
+                        <h3 class="card-title">Calendario</h3>
+                    </div>
+                    <div class="col-md-6">
                         <label for="">Consultorios</label>
                         <select name="consultorio_id" id="consultorio_select" class="form-control">
+                            <option value="">Seleccionar un consultorio</option>
                             @foreach ($consultorios as $consultorio )
                             <option value="{{$consultorio->id}}">{{$consultorio->nombre." - ".$consultorio->ubicacion}}</option>
                             @endforeach
                         </select>
+
                     </div>
                 </div>
+
+            </div>
+            <div class="card-body">
                 <script>
                     $('#consultorio_select').on('change', function() {
                         var consultorio_id = $('#consultorio_select').val();
@@ -159,8 +164,6 @@
                 </script>
                 <div id="consultorio_info"></div>
                 <hr>
-                
-
 
             </div>
         </div>

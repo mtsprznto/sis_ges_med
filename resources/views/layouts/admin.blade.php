@@ -114,7 +114,7 @@
                                 <p>
                                     Secretarias
                                     <i class="right fas fa-angle-left"></i>
-                                    
+
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -132,14 +132,14 @@
                                 </li>
                             </ul>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon bi bi-person-fill-check"></i>
                                 <p>
                                     Pacientes
                                     <i class="right fas fa-angle-left"></i>
-                                    
+
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -164,7 +164,7 @@
                                 <p>
                                     Consultorios
                                     <i class="right fas fa-angle-left"></i>
-                                    
+
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -188,7 +188,7 @@
                                 <p>
                                     Doctores
                                     <i class="right fas fa-angle-left"></i>
-                                    
+
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -213,7 +213,7 @@
                                 <p>
                                     Horarios
                                     <i class="right fas fa-angle-left"></i>
-                                    
+
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -232,13 +232,17 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link bg-red">
+                            <a href="{{ route('logout') }}" class="nav-link bg-red" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 <i class="nav-icon bi bi-door-closed"></i>
                                 <p>
                                     Cerrar sesión
                                 </p>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </a>
                         </li>
+                        
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

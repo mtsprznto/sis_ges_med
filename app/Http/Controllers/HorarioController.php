@@ -66,9 +66,11 @@ class HorarioController extends Controller
             'dia' => 'required',
             'hora_inicio' => 'required|date_format:H:i',
             'hora_fin' => 'required|date_format:H:i|after:hora_inicio',
+            'consultorio_id' => 'required|exists:consultorios,id',
         ]);
 
         $horarioExistente = Horario::where('dia', $request->dia)
+            ->where('consultorio_id', $request->consultorio_id)
             ->where(function ($query) use ($request) {
                 $query->where(function ($q) use ($request) {
                     $q->where('hora_inicio', '>=', $request->hora_inicio)
@@ -96,6 +98,8 @@ class HorarioController extends Controller
         Horario::create($request->all());
         return redirect()->route('admin.horarios.index')
             ->with("mensaje", "Se registro el horario de manera exitosa")->with("icono", "success");
+        
+        
     }
 
     /**
